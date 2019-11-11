@@ -1,1 +1,52 @@
+#1 Let's say if we want to move the zeroes in an array to the back of an array
+
+def moveZerosToEnd(arr, n):
+    count = 0
+    for i in range(n):
+        if arr[i] != 0:
+            arr[count] = arr[i]
+            count += 1
+
+    while count < n:
+        arr[count] = 0
+        count += 1
+
+    return arr
+
+# Drive code
+arr = [1, 10, 0, 2, 8, 3, 0, 0, 6, 4, 0, 5, 7, 0, 0, 8, 9, 7]
+n = len(arr)
+print(moveZerosToFront(arr, n))
+
+
+###########################################################################################################################################
+#2 Situation is reversed, bring the zeroes to the front
+
+def moveZerosToFront(arr, n):
+    count = 0
+    for i in range(n):
+        if arr[i] != 0:
+            arr[count] = arr[i]
+            count += 1
+
+    for i in range(count, n-1):
+        arr.pop()
+
+    while count < n:
+        var = 0
+        arr.insert(0, var)
+        count += 1
+
+    return arr
+    
+# Driver code
+arr = [1, 10, 0, 2, 8, 3, 0, 0, 6, 4, 0, 5, 7, 0, 0, 8, 9, 7]
+n = len(arr)
+print(moveZerosToFront(arr, n))
+
+###########################################################################################################################################
+
+
+
+
 
