@@ -46,6 +46,39 @@ print(moveZerosToFront(arr, n))
 
 ###########################################################################################################################################
 
+#3 Given an array, rotate the array to the right by k steps, where k is non-negative.
+
+For example:
+Input: [1,2,3,4,5,6,7] and k = 3
+Output: [5,6,7,1,2,3,4]
+
+input = [1, 2, 3, 4, 5, 6, 7]
+k = 3
+
+
+def rotate_input(arr):
+    pop_arr = []
+    for i in range(0, k):
+        pop_var = arr.pop()
+        pop_arr.insert(0, pop_var)
+
+    output = pop_arr + arr
+
+    return output
+
+
+print(rotate_input(input))
+
+
+Or even easier:
+
+def rotate(nums, k):
+      n = len(nums)
+      k = k % n
+      nums[:] = nums[n-k:] + nums[:n-k]
+
+      return nums
+
 
 
 
