@@ -1,5 +1,5 @@
 # glowing-waffle
 
-Just to buiild codes, mostly from Daily Coding problem and Leetcode. Generally comments the code to help everyone understand better.
+Just to build codes, mostly from Daily Coding problem and Leetcode. Generally comments the code to help everyone understand better.
 
 Feel free to submit pull requests if you'd like to fix it or have recommendations
