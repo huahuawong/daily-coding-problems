@@ -1,1 +1,29 @@
+#1 Given a binary tree, determine if it is a valid binary search tree (BST).
+
+Recap, BST means nodes to the left is lower than the root value, nodes to the right has higher value than root value
+To validate a BST, first set a lower bound and an upper bound, let's call it floor and ceiling respectively.
+We know that the left node is smaller than the root value, so its range would be from negative infinity to the root value
+Same thing for the right node, ranging from root value to positive infinity.
+As long as when the function checks each node and the left and right nodes are in their respective range, it'd be valid.
+
+def isValidBST(root, floor=float('-inf'), ceiling=float('inf')):
+        if not root: 
+            return True
+        if root.val <= floor or root.val >= ceiling:
+            return False
+            
+    # in the left branch, root is the new ceiling; contrarily root is the new floor in right branch
+        return isValidBST(root.left, floor, root.val) and isValidBST(root.right, root.val, ceiling)
+
+
+# Driver code
+x = [2,1,3]
+
+
+#############################################################################################################################################
+
+
+
+
+
 
