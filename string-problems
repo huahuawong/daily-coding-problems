@@ -1,8 +1,21 @@
 #1 Given a non-empty string s and a dictionary wordDict containing a list of non-empty words, 
 determine if s can be segmented into a space-separated sequence of one or more dictionary words.
 
+Let's say we have 
 
-def wordBreak(self, s, wordDict):
+s = "penapplepen"
+words = ["apple", "pen"]
+
+Basically, the idea is:
+Initialize an array of False, length of array is same as the s    
+d[i] is True if there is a word in the dictionary that ends at ith index of s AND d is also True at the beginning of the word
+d[2] is True because there is "pen" in the dictionary that ends at 2nd index of "penapplepen"
+d[7] is True because there is "apple" in the dictionary that ends at the 7th index of "leetcode" AND d[2] is True
+d[10] is True because there is "pen" in the dictionary that ends at the 10th index of "leetcode" AND d[7] is True
+
+So the code goes:
+
+def wordBreak(s, wordDict):
      d = [False] * len(s)
      for i in range(len(s)):
          for w in wordDict: 
