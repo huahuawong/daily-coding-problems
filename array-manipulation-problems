@@ -132,22 +132,19 @@ def Binarysearch(nums, target)
         return -1
 
     low, high = 0, len(nums) - 1  #first, we get the high and low point
-    middle = (low + high)/2       #and then we get the middle point
-    if nums[mid] == target:
-        return mid
     
-    if nums[low] <= nums[mid]:    #recall that this is a sorted array, so if nums[mid] is larger than nums[low] means that target should be at 
-        if nums[low] <= target <= nums[mid]:    #the left hand side
-            high = mid - 1
-        else:
-            low = mid + 1
-    else:
-        if nums[mid] <= target <= nums[high]:
-            low = mid + 1
-        else:
+    while low <= high:
+        middle = (low + high)/2       #and then we get the middle point
+    
+        if nums[mid] == target:
+            return mid
+    
+        if nums[low] <= nums[mid]:    #recall that this is a sorted array, so if nums[mid] is larger than nums[low] means that target should be at 
+            if nums[low] <= target <= nums[mid]:    #the left hand side
                 high = mid - 1
-
-        return -1
+            else:
+                low = mid + 1
+    return -1
     
     
 ###########################################################################################################################################
