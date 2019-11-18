@@ -122,10 +122,24 @@ matrix = [[0,1,2,0],[3,4,5,2], [1,3,1,5]]
 (i.e., [0,1,2,4,5,6,7] might become [4,5,6,7,0,1,2]).
 
 You are given a target value to search. If found in the array return its index, otherwise return -1.
-
 You may assume no duplicate exists in the array.
 
+Easiest way to do it is searching the array one by one, Alternative way is binary search, which is harder. Let's do binary.
 
+def Binarysearch(nums, target)
+
+    if not nums:
+        return -1
+
+    low, high = 0, len(nums) - 1  #first, we get the high and low point
+    middle = (low + high)/2
+    if nums[mid] == target:
+        return mid
+    if nums[low] < 
+    
+    
+    
+    
 
 
 
