@@ -4,5 +4,18 @@ Given a 32-bit integer, return the number with its bits reversed.
 
 For example, given the binary number 1111 0000 1111 0000 1111 0000 1111 0000, return 0000 1111 0000 1111 0000 1111 0000 1111.
 
+#Note: not sure if this is unsigned or signed, probably doesn't matter because we are just reversing it
+
+def reverse32(x)
+    i = bin(i)                         # convert decimal to binary 
+    i = i[2:]                          # discard the 0b
+    i_reversed = i[::-1]               # reverse the number
+    
+    return i_reversed
+    
+# Driver code
+ x = 100
+
+
 
 
