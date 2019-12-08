@@ -1,15 +1,12 @@
 #1 This question was asked by Google.
 
-Given an N by M matrix consisting only of 1's and 0's, find the largest rectangle containing only 1's and return its area.
+You are given an array of length n + 1 whose elements belong to the set
+{1, 2, ..., n}. By the pigeonhole principle, there must be a duplicate. 
 
-For example, given the following matrix:
+Find it in linear time and space.
 
-[[1, 0, 0, 0],
- [1, 0, 1, 1],
- [1, 0, 1, 1],
- [0, 1, 0, 0]]
+pigeonhole principle - states that if items are put into containers, with, then at least one container must contain more than one item. 
 
-Return 4.
 
 
 
