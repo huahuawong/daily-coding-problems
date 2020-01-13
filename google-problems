@@ -38,5 +38,11 @@ class Solution:
         return ptr1
 
 
+#2 You are given an array of arrays of integers, where each array corresponds to a row in a triangle of numbers. 
+For example, [[1], [2, 3], [1, 5, 1]] represents the triangle:
 
+  1
+ 2 3
+1 5 1
 
+The weight of the path is the sum of the entries, which would be 1+3+5 = 9 in this case
