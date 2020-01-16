@@ -24,3 +24,30 @@ def wordBreak(s, wordDict):
      return d[-1]
         
         
+#2 Given a string and a string dictionary, find the longest string in the dictionary that can be formed by 
+deleting some characters of the given string. If there are more than one possible results, return the longest word 
+with the smallest lexicographical order. If there is no possible result, return the empty string. 
+
+def findlongestword(s, d):
+     d.sort(key = lambda x: (-len(x), x)   #we first sort the words in d based on length in descending order,
+                                             #followed by alphabets
+     for word in d:
+          i = 0
+          for c in s:
+               if i < len(word) and word [i] == c:
+                    i += 1  # increment i
+               if i == len(word):
+                    return word      #if i equals to length of word, means that it has found the longest word
+                    
+     return ""
+
+
+s = "abpcplea"
+d = ["ale","apple","monkey","plea"]
+
+
+
+
+
+
+
