@@ -148,8 +148,26 @@ def Binarysearch(nums, target)
     
     
 ###########################################################################################################################################
+# 6 Given an array of integers and an integer k, you need to find the total number of continuous subarrays whose 
+sum equals to k.    
+
+# basically what we need to do is to use a dictionary that contains the sum of integers from 0 to i
+# d.get(sum - k, 0) gets key of 1 if the sum exists in the dict, if not returns a 0
+def subarraySum(nums, k):
+    count = 0
+    sum = 0
+    d = dict()
+    d[0] = 1
+
+    for num in nums:
+        sum = sum + num
+        count += d.get(sum-k, 0)    # returns 0 if no keys are found
+        d[sum] = d.get(sum,0) + 1
+
+    return count
     
-
-
+    
+nums = [1,1,1] 
+k = 2
 
 
