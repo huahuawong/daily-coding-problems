@@ -187,4 +187,19 @@ class Solution(object):
 A fixed point in an array is an element whose value is equal to its index. Given a sorted array of distinct elements
 , return a fixed point, if one exists. Otherwise, return False
 
+def findindex (arr):
+    index = 0
+    
+    for num in arr:
+        if num  == index:
+            return num
+        else:
+            index += 1
+            continue
 
+    return False
+    
+
+
+arr = [-6, 0, 1, 40]
+print(findindex(arr))
