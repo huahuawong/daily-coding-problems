@@ -180,4 +180,11 @@ class Solution(object):
         nums1.sort()
         
         return nums1
-            
+
+###########################################################################################################################################
+# 8 This problem was asked by Apple.
+
+A fixed point in an array is an element whose value is equal to its index. Given a sorted array of distinct elements
+, return a fixed point, if one exists. Otherwise, return False
+
+
