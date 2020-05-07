@@ -72,4 +72,15 @@ A = [[2],
      [3, 6, 9, 5, 2]]
      
      
+#3 This problem was asked by Google. In linear algebra, a Toeplitz matrix is one in which the elements 
+on any given diagonal from top left to bottom right are identical.
+ 
+Write a program to determine whether a given input is a Toeplitz matrix. 
+ 
+ 
+ 
+ 
+ 
+     
+     
      
