@@ -77,7 +77,52 @@ on any given diagonal from top left to bottom right are identical.
  
 Write a program to determine whether a given input is a Toeplitz matrix. 
  
- 
+def isDiagonal(mat, i, j):
+    res = mat[i][j]
+    i += 1
+    j += 1
+
+    while i < len(mat) and j < len(mat[0]):
+
+        # mismatch found
+        if (mat[i][j] != res):
+            return False
+
+        i += 1
+        j += 1
+
+    # we only reach here when all elements
+    # in given diagonal are same
+    return True
+
+
+def isToeplitz(mat):
+    for j in range(len(mat[0])):
+        if not isDiagonal(mat, 0, j):
+            return False
+
+    for i in range(len(mat)):
+        if not isDiagonal(mat, i, 0):
+            return False
+
+    return True
+
+
+mat = [[6, 7, 8, 9],
+       [4, 5, 7, 8],
+       [1, 4, 6, 7],
+       [0, 1, 4, 6],
+       [2, 0, 1, 4]]
+
+
+M = len(mat[0])
+N = len(mat)
+
+if (isToeplitz(mat)):
+    print("Matrix is a Toeplitz")
+else:
+    print("Matrix is not a Toeplitz")
+
  
  
  
