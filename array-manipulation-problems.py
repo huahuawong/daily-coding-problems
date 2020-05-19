@@ -205,7 +205,7 @@ arr = [-6, 0, 1, 40]
 print(findindex(arr))
 
 ###########################################################################################################################################
-# An imminent hurricane threatens the coastal town of Codeville. If at most two people can fit in a rescue boat,
+# 9 An imminent hurricane threatens the coastal town of Codeville. If at most two people can fit in a rescue boat,
 # and the maximum weight limit for a given boat is k, determine how many boats will be needed to save everyone.
 
 # For example, given a population with weights [100, 200, 150, 80] and a boat limit of 200, the smallest number 
@@ -228,7 +228,7 @@ k = 200
 print(calc_min(weights, k))
     
 ###########################################################################################################################################
-# Given a string s and a non-empty string p, find all the start indices of p's anagrams in s.
+# 10 Given a string s and a non-empty string p, find all the start indices of p's anagrams in s.
 #
 # Strings consists of lowercase English letters only and the length of both strings s and p will not be larger
 # than 20,100.
@@ -255,6 +255,23 @@ s = "aaaaaaaaaa"
 word = "aaaaaaaaaaaaa"
 
 # So alternatively,
+from collections import Counter
+
+def findAnagrams(s, p):
+    indices_array = []
+    l = len(p)
+    counter_p = Counter(p)
+    counter_s = Counter(s[:l - 1])
+    i = 0
+    while i + l <= len(s):
+        counter_s[s[i + l - 1]] += 1
+        if counter_s == counter_p:
+            indices_array.append(i)
+        counter_s[s[i]] -= 1
+        if counter_s[s[i]] == 0:
+            del counter_s[s[i]]
+        i += 1
+    return indices_array
 
 print(find_anagram(s, word))
 
