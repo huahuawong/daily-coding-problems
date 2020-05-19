@@ -227,6 +227,34 @@ total = 0
 k = 200
 print(calc_min(weights, k))
     
+###########################################################################################################################################
+# Given a string s and a non-empty string p, find all the start indices of p's anagrams in s.
+#
+# Strings consists of lowercase English letters only and the length of both strings s and p will not be larger
+# than 20,100.
 
+# imports that can be used to permutate the strings
+from itertools import permutations
 
+def find_anagram(s, word):
+    indices = []
+    perms = [''.join(p) for p in permutations(word)]
+    for i in range(0, len(s) - len(p) + 1):
+        substring = s[i: i + len(p)]
+        if substring in perms:
+            indices.append(i)
+    return indices
+
+# Driver code to test
+s = "cbaebabacd"
+word = "abc"
+
+# The idea is we generate permutations of the word and check if each substring in the array contains the word. It workds but
+# it'd take a really long time to compute if we have this as input:
+s = "aaaaaaaaaa"
+word = "aaaaaaaaaaaaa"
+
+# So alternatively,
+
+print(find_anagram(s, word))
 
