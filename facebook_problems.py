@@ -17,7 +17,7 @@ def reverse32(x)
  x = 100
  
  
- #2 In chess, the Elo rating system is used to calculate player strengths based on game results.
+#2 In chess, the Elo rating system is used to calculate player strengths based on game results.
 #
 # A simplified description of the Elo system is as follows. Every player begins at the same score. For each subsequent
 # game, the loser transfers some points to the winner, where the amount of points transferred depends on how unlikely
