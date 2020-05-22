@@ -1,8 +1,8 @@
 #1 This problem was asked by Facebook.
 
-Given a 32-bit integer, return the number with its bits reversed.
+# Given a 32-bit integer, return the number with its bits reversed.
 
-For example, given the binary number 1111 0000 1111 0000 1111 0000 1111 0000, return 0000 1111 0000 1111 0000 1111 0000 1111.
+# For example, given the binary number 1111 0000 1111 0000 1111 0000 1111 0000, return 0000 1111 0000 1111 0000 1111 0000 1111.
 
 #Note: not sure if this is unsigned or signed, probably doesn't matter because we are just reversing it
 
@@ -27,5 +27,40 @@ def reverse32(x)
 # Implement this system.
 
 
+class EloRatings:
+    # starting points of each user
+    START_RATING = 1000
+
+    # simple initialization
+    def __init__(self):
+        # dictionary is used to store the key(user name) and values (ratings based on win and loss)  of data
+        self.ratings = dict()
+
+    # add user name to dctionary
+    def add_player(self, name):
+        self.ratings[name] = EloRatings.START_RATING
+
+    def add_result(self, p1, p2, winner):
+        # In case the players haven't been added into the system yet
+        if p1 not in self.ratings:
+            self.add_player(p1)
+        if p2 not in self.ratings:
+            self.add_player(p2)
+
+        # loser is p2 if the winner is p1, else the loser is p1
+        loser = p2 if winner == p1 else p1
+        # the loser rating will reduce by 10%, note that this means if user with higher score loses at one round, the winner will
+        # get more points since the "diff" is based on the higher score percentage
+        diff = self.ratings[loser] // 10
+        self.ratings[loser] -= diff
+        self.ratings[winner] += diff
+
+
+# Tests
+elo = EloRatings()
+elo.add_player("a")
+elo.add_player("b")
+elo.add_result("a", "b", "a")
+elo.ratings
 
 
