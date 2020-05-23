@@ -38,3 +38,13 @@ uc.add_units(("yard", "chain"), (22, 1))
 
 # Testing to see if the unit converter works
 uc.convert("inch", 24, "foot")
+
+
+# Q2
+# Given integers M and N, write a program that counts how many positive integer pairs (a, b) satisfy the following conditions:
+# a + b = M
+# a XOR b = N
+
+
+
+
