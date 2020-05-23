@@ -45,6 +45,21 @@ uc.convert("inch", 24, "foot")
 # a + b = M
 # a XOR b = N
 
+# Question is a little unclear, do (1, 5) and (5, 1) count as 2 or 1.
+def find_pairs(m, n):
+    count = 0
+    # reason we use range(m //2 + 1) is because this will ensure that a + b always equal to m and we only have to check
+    # it for (half the length) times
+    for a in range(m//2 + 1):
+        b = m - a 
+        if a ^ b == n:
+            count += 1
+    return count
+
+
+m = 6
+n = 4
+print(find_pairs(m, n))
 
 
 
