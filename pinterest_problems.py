@@ -3,14 +3,17 @@
 
 # Given a list of N people and the above operation, find a way to identify the celebrity in O(N) time.
 
+# function to see if a knows b
 def knows(known, a, b):
     return b in known[a]
 
 
 def get_celeb(known):
+    # set of keys from the known dataset
     celeb_candidates = set(known.keys())
 
     while celeb_candidates:
+        # gets the next iterable candidates, notice that 
         sample = next(iter(celeb_candidates))
         celeb_candidates.remove(sample)
         count = len(celeb_candidates)
