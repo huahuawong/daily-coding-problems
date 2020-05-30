@@ -91,6 +91,39 @@ n = 4
 print(solve(n))
 
 
+# Q2 Given an array of numbers and a number k, determine if there are three entries in the array which add up to the specified
+# number k. For example, given [20, 303, 3, 4, 25] and k = 49, return true as 20 + 4 + 25 = 49
+
+def get_two_sum(num, arr):
+    i, k = 0, len(arr) - 1
+    while i < k:
+        a = arr[i]
+        b = arr[k]
+        target_sum = a + b
+        if target_sum == num:
+            return (a, b)
+        elif target_sum < num:
+            i += 1
+        else:
+            k -= 1
+
+
+def find_subarraysum(arr, target):
+    arr.sort()
+    for i in range(len(arr)):
+        matching = arr[i]
+        if matching > target:
+            continue
+        twos = get_two_sum(target - matching, arr[:i] + arr[i+1:])
+        if twos:
+            return True
+    return False
+
+
+arr = [20, 303, 4, 25]
+k = 49
+print(find_subarraysum(arr, k))
+
 
 
 
