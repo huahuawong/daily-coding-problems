@@ -62,44 +62,55 @@ print(findSmallest(array, n1))
 ############################################################################################################################
 #3 Given an integer k and a string s, find the length of the longest substring that contains at most k distinct characters.
 # For example, given s = "abcba" and k = 2, the longest substring with k distinct characters is "bcb".
-def get_longest_sub_with_k_dist(s, k):
-    if not s:
+
+# define character range
+CHAR_RANGE = 128
+
+# Function to find longest substring of given containing
+# k distinct characters using sliding window
+def longestSubstr(str, k):
+    if not str:
         return ""
-    elif len(s) <= k:
-        return s
+    elif len(str) <= k:
+        return str
     elif k == 1:
-        return s[0]
-
-    distinct_char_count = 0
-    seen_chars = set()
-    candidate = None
-    remaining_string = None
-
-    # to keep track of where the second character occurred
-    first_char = s[0]
-    second_char_index = 0
-    while s[second_char_index] == first_char:
-        second_char_index += 1
-
-    candidate = s
-    for index, char in enumerate(s):
-        if char not in seen_chars:
-            seen_chars.add(char)
-            distinct_char_count += 1
-
-        if distinct_char_count > k:
-            candidate = s[:index]
-            remaining_string = s[second_char_index:]
-            break
-            
-    longest_remaining = get_longest_sub_with_k_dist(remaining_string, k)
+        return str[0]
     
-    longest_substring = None
-    if len(candidate) < len(longest_remaining):
-        longest_substring = longest_remaining
-    else:
-        longest_substring = candidate
-    return longest_substring
+	# stores longest substring boundaries
+	end = begin = 0
 
+	# set to store distinct characters in a window
+	window = set()
 
+	# count list to store frequency of characters present in current window
+	# we can also use a dictionary instead of count list
+	freq = [0] * CHAR_RANGE
 
+	# [low..high] maintain sliding window boundaries
+	low = high = 0
+
+	while high < len(str):
+
+		window.add(str[high])
+		freq[ord(str[high])] = freq[ord(str[high])] + 1
+
+		# if window size is more than k, remove characters from the left
+		while len(window) > k:
+
+			# if the frequency of leftmost character becomes 0 after
+			# removing it in the window, remove it from set as well
+			freq[ord(str[low])] = freq[ord(str[low])] - 1
+			if freq[ord(str[low])] == 0:
+				window.remove(str[low])
+
+			low = low + 1	   # reduce window size
+
+		# update maximum window size if necessary
+		if end - begin < high - low:
+			end = high
+			begin = low
+
+		high = high + 1
+
+	# return longest substring found at str[begin..end]
+	return str[begin:end + 1]
