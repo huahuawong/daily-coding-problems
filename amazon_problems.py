@@ -1,7 +1,7 @@
 #1 Given a string, determine whether any permutation of it is a palindrome.
 
-For example, carrace should return true, since it can be rearranged to form racecar, which is a palindrome. 
-daily should return false, since there's no rearrangement that can form a palindrome.
+# For example, carrace should return true, since it can be rearranged to form racecar, which is a palindrome. 
+# daily should return false, since there's no rearrangement that can form a palindrome.
 
 NO_OF_CHARS = 256
 
@@ -58,4 +58,11 @@ def findSmallest(arr, n):
 array = [1, 1, 3, 4] 
 n1 = len(array) 
 print(findSmallest(array, n1))
+
+############################################################################################################################
+#3 Given an integer k and a string s, find the length of the longest substring that contains at most k distinct characters.
+# For example, given s = "abcba" and k = 2, the longest substring with k distinct characters is "bcb".
+
+
+
 
