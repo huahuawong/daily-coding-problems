@@ -114,3 +114,12 @@ def longestSubstr(str, k):
 
 	# return longest substring found at str[begin..end]
 	return str[begin:end + 1]
+
+############################################################################################################################
+# Q4 Given a linked list and an integer k, remove the k-th node from the end of the list and return the head of the list.
+# k is guaranteed to be smaller than the length of the list.
+
+
+
+
+
