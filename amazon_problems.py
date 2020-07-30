@@ -118,7 +118,80 @@ def longestSubstr(str, k):
 ############################################################################################################################
 # Q4 Given a linked list and an integer k, remove the k-th node from the end of the list and return the head of the list.
 # k is guaranteed to be smaller than the length of the list.
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
 
+    def __repr__(self):
+        return self.data
+
+class LinkedList:
+    def __init__(self, nodes=None):
+        self.head = None
+        if nodes is not None:
+            node = Node(data=nodes.pop(0))
+            self.head = node
+            for elem in nodes:
+                node.next = Node(data=elem)
+                node = node.next
+
+    def __repr__(self):
+        node = self.head
+        nodes = []
+        while node is not None:
+            nodes.append(node.data)
+            node = node.next
+        nodes.append("None")
+        return " -> ".join(nodes)
+
+    def __iter__(self):
+        node = self.head
+        while node is not None:
+            yield node
+            node = node.next
+
+    def getCount(self):
+        temp = self.head  # Initialise temp
+        count = 0  # Initialise count
+
+        # Loop while end of linked list is not reached
+        while (temp):
+            count += 1
+            temp = temp.next
+        return count
+
+    def get_element(self, target):
+        temp = self.head
+        count = 0
+        while count < target:
+            count += 1
+            temp = temp.next
+        return temp
+
+    def remove_node(self, target_node_data):
+        if not self.head:
+            raise Exception("List is empty")
+
+        if self.head.data == target_node_data:
+            self.head = self.head.next
+            return
+
+        previous_node = self.head
+        for node in self:
+            if node.data == target_node_data:
+                previous_node.next = node.next
+                return
+            previous_node = node
+
+        raise Exception("Node with data '%s' not found" % target_node_data)
+
+llist = LinkedList(["a", "b", "c", "d", "e"])
+
+k = 4
+target_num = llist.getCount() - k
+element = llist.get_element(target_num)
+llist.remove_node(str(element))
 
 
 
