@@ -1,16 +1,16 @@
-List of important patterns to remember when you go to coding interviews:
+# List of important patterns to remember when you go to coding interviews:
 
-1. Sliding window
+# 1. Sliding window
 
-Common problems you use the sliding window pattern with:
+# Common problems you use the sliding window pattern with:
 
-Maximum sum subarray of size ‘K’ (easy)
-Longest substring with ‘K’ distinct characters (medium)
-String anagrams (hard)
+# Maximum sum subarray of size ‘K’ (easy)
+# Longest substring with ‘K’ distinct characters (medium)
+# String anagrams (hard)
 
 
-So, let's say for instance, Given an array of integers of size ‘n’, we want to calculate the maximum sum of 
-‘k’ consecutive elements in the array.
+# So, let's say for instance, Given an array of integers of size ‘n’, we want to calculate the maximum sum of 
+# ‘k’ consecutive elements in the array.
 
 def findmax(arr, n, k):
   sum = 0
