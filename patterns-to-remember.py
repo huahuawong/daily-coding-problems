@@ -33,4 +33,28 @@ print(maxSum(arr, n, k))
 # When to use 2 pointers? when you're dealing with sorted array or linkedlist and you have to find a pair that fulfills certain criteria
 # For instance, Given an array of distinct elements. The task is to find triplets in the array whose sum is zero.
 
+import numpy as np
 
+def findTriplets(arr, n):
+    arr.sort()
+    triplet_array = []
+    for i in range(0, n - 1):
+      l = i + 1
+      r = n - 1
+      x = arr[i]
+      while (l < r):
+        if (x + arr[l] + arr[r] == 0):
+          triplet_array.append(np.array([x, arr[l],arr[r]]))
+          l += 1
+          r -= 1
+
+        elif (x + arr[l] + arr[r] < 0):
+          l += 1
+        else:
+          r -= 1
+    return triplet_array
+
+# Driven source
+arr = [0, -1, 2, -3, 1]
+n = len(arr)
+findTriplets(arr, n)
