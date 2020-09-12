@@ -29,3 +29,8 @@ k = 4
 n = len(arr) 
 print(maxSum(arr, n, k)) 
 
+# 2. Two pointers or iterators, typically useful to search for pairs or a value in a sorted array or linked list
+# When to use 2 pointers? when you're dealing with sorted array or linkedlist and you have to find a pair that fulfills certain criteria
+# For instance, Given an array of distinct elements. The task is to find triplets in the array whose sum is zero.
+
+
