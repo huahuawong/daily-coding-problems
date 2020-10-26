@@ -58,3 +58,10 @@ def findTriplets(arr, n):
 arr = [0, -1, 2, -3, 1]
 n = len(arr)
 findTriplets(arr, n)
+
+# 3. Fast and Slow pointers
+# The Fast and Slow pointer approach, also known as the Hare & Tortoise algorithm, is a pointer algorithm that uses two pointers which move 
+# through the array (or sequence/linked list) at different speeds. This approach is quite useful when dealing with cyclic linked lists or arrays
+# Cyclic arrays = a data structure that used a array as if it were connected end-to-end
+
+
