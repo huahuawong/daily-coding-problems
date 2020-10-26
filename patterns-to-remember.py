@@ -64,4 +64,16 @@ findTriplets(arr, n)
 # through the array (or sequence/linked list) at different speeds. This approach is quite useful when dealing with cyclic linked lists or arrays
 # Cyclic arrays = a data structure that used a array as if it were connected end-to-end
 
+# Example, let's say given a linked list, we want to see if there is a cycle within the linked list
+def findcycle(head):
+    head = hare = tortoise
+    while hare and hare.next:
+        hare = hare.next.next
+        tortoise = tortoise.next
+        
+        if hare == tortoise:
+            return True
+            
+    return False
+  
 
