@@ -8,7 +8,7 @@ counts = dict()
 check_voters = []
 
 while True:
-    vote_id = input("Enter the voters ID: /Type 'quit' to exit\n")
+    vote_id = input("\n Enter the voters ID: /Type 'quit' to exit\n")
     if vote_id == "quit":
         break
     
@@ -27,7 +27,7 @@ while True:
     
     print("The top 3 candidates currently are:")
     for key, value in sorted_voted:
-        print (key)
+        print ("Candidate ID: %d and the count of votes collected is: %d " %(int(key), int(value)))
 
 
 
