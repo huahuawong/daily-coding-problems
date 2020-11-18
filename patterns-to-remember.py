@@ -76,4 +76,27 @@ def findcycle(head):
             
     return False
   
+# 4. Merge Intervals
+# The Merge Intervals pattern is an efficient technique to deal with overlapping intervals. In a lot of problems involving intervals,
+# you either need to find overlapping intervals or merge intervals if they overlap.
 
+# Example: Given two lists of closed intervals, each list of intervals is pairwise disjoint and in sorted order.
+# Return the intersection of these two interval lists.
+
+# To approach this problem, we need to understand when do intersections happen?
+# Let's look at the sequence: A = [[0,2],[5,10]] and B = [[1,5],[8,12]], for the first element of the list, we can tell there is an overlap when A.end > B.start 
+# and A.start < B.end, with that in mind, let's get to it
+
+def findInterval(A: List[List[int]], B: List[List[int]]) -> List[List[int]]:
+  res = []
+  # initialize starting index to iterate through the array
+  i = j = 0
+  while i < len(A) and j < len(B):
+    if A[i][0] <= B[j][-1] and B[j][0] <= A[i][-1]:
+      res.append([max(A[i][0], B[j][0]), min(A[i][-1], B[j][-1])])    
+    # if the end value of A is greater than B, we know we have to move on to the next A
+    if A[i][-1] < B[j][-1]:
+      i += 1
+    else:
+      j += 1
+   return res
