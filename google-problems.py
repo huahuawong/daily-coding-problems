@@ -124,10 +124,26 @@ else:
     print("Matrix is not a Toeplitz")
 
  
- #4 You are given an array of nonnegative integers. Let's say you start at the beginning of the array and are trying to advance to the end. You can advance
- # at most, the number of steps that you're currently on. Determine whether you can get to the end of the array.
+# 4 You are given an array of nonnegative integers. Let's say you start at the beginning of the array and are trying to advance to the end. You can advance
+# at most, the number of steps that you're currently on. Determine whether you can get to the end of the array.
  
- 
-     
-     
+# the first intuition is to iterate from the beginning of the array, but the easier way is to iterate from the end, specifically from second to end array to the first item
+# but of course we can consider the edge case, which is if the first element of the array is 0, the end can never be reached
+# To iterate from end to the beginning, if the index has jump count which can reach to or beyond the last position, we'll update the last location to i
+
+def find_path(arr, n):
+      if arr[0] == 0:
+             return False
+        
+      last_position = n -1
+    
+      for i in range(len(arr)-2,-1,-1): 
+              if (i + arr[i]) >= last_position: 
+                    last_position = i 
+      return last_position == 0   
+  
+# arr = [1, 3, 1, 2, 0, 1]
+arr = [0, 2, 1, 3, 0]
+n = len(arr)
+print(find_path(arr, n))
      
