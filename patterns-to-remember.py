@@ -100,3 +100,19 @@ def findInterval(A: List[List[int]], B: List[List[int]]) -> List[List[int]]:
     else:
       j += 1
    return res
+
+# 5. Inplace traversal of linkedlist
+# Sometimes we may come across questions to reverse the linkedlist and without using extra memory, one way to do it is to use current, previous and next head node.
+# Best reference with visualization: https://www.geeksforgeeks.org/reverse-a-linked-list/
+
+def reverse(self):
+    prev = None
+    curr = self.head
+
+    while curr != None:
+        next_elem = curr.next
+        curr.next = prev
+        prev = curr
+        curr = next_elem
+    self.head = prev
+
