@@ -120,6 +120,54 @@ def find_subarraysum(arr, target):
     return False
 
 
+# Q3
+# Given an array of numbers and a number k, determine if there are three entries in the array which add up to the specified number k
+
+# The most straight forward way to do it is to use 3 loops and keep iterating through the numbers, if the sum is found, then return True, but this would result in O(n^3)
+# The alternate way is to use 2 pointers, intiialize i from 0 to the array lenghth - 2, minus 2 in this case since we are considering 2 pointers, and the left pointer is i + 1
+# We will also be using left and right pointer, left would be i+1, and right is the last element of the array
+# Basically for i = 0, it'd be arr[0] + arr[1] + arr[5] (assuming it;s 5 element array), if the sum of these 3 is smaller than the target, then we increment i
+
+def find3Numbers(A, arr_size, sum): 
+    # Sort the elements  
+    A.sort() 
+  
+    # Now fix the first element one by one and find the other two elements  
+    for i in range(0, arr_size-2): 
+      
+  
+        # To find the other two elements, start two index variables from two corners of the array and 
+        # move them toward each other 
+          
+        # index of the first element in the remaining elements 
+        l = i + 1 
+          
+        # index of the last element 
+        r = arr_size-1 
+        while (l < r): 
+          
+            if( A[i] + A[l] + A[r] == sum): 
+                print("Triplet is", A[i],  
+                     ', ', A[l], ', ', A[r]); 
+                return True
+              
+            elif (A[i] + A[l] + A[r] < sum): 
+                l += 1
+            else:
+                r -= 1
+  
+    # If we reach here, then no triplet was found 
+    return False
+  
+# Driver program to test above function  
+A = [1, 4, 45, 6, 10, 8] 
+sum = 22
+arr_size = len(A) 
+  
+find3Numbers(A, arr_size, sum) 
+
+
+
 arr = [20, 303, 4, 25]
 k = 49
 print(find_subarraysum(arr, k))
