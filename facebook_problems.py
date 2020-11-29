@@ -1,4 +1,4 @@
-#1 This problem was asked by Facebook.
+# 1 This problem was asked by Facebook.
 
 # Given a 32-bit integer, return the number with its bits reversed.
 
@@ -17,7 +17,7 @@ def reverse32(x)
  x = 100
  
  
-#2 In chess, the Elo rating system is used to calculate player strengths based on game results.
+# 2 In chess, the Elo rating system is used to calculate player strengths based on game results.
 #
 # A simplified description of the Elo system is as follows. Every player begins at the same score. For each subsequent
 # game, the loser transfers some points to the winner, where the amount of points transferred depends on how unlikely
@@ -62,5 +62,24 @@ elo.add_player("a")
 elo.add_player("b")
 elo.add_result("a", "b", "a")
 elo.ratings
+
+
+# 3 
+# Given three 32-bit integers x, y, and b, return x if b is 1 and y if b is 0, using only mathematical or bit operations. You can assume b can only be 1 or 0.
+
+# Analysis: Sounds simple, but the trick is we can only use mathematical operations, otherwise I'd use "if-else" statement. To proceed, let's define an equation
+# to return either x and y, if its b = 1, we'll return 1 * x, and to mask y, we can just use abs(b-1) = abs (1-1) = 0. 
+def find_integer(x, y, b):
+    return x * b + y * abs(b-1)
+
+
+x = 3; y = 5; b = 1
+print(find_integer(x, y, b))
+
+
+
+
+
+
 
 
