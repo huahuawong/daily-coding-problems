@@ -1,12 +1,12 @@
 #1 This question was asked by Google.
 
-You are given an array of length n + 1 whose elements belong to the set
-{1, 2, ..., n}. By the pigeonhole principle, there must be a duplicate. 
+# You are given an array of length n + 1 whose elements belong to the set
+# {1, 2, ..., n}. By the pigeonhole principle, there must be a duplicate. 
 
-Find it in linear time and space.
+# Find it in linear time and space.
 
-pigeonhole principle - states that if items are put into containers, with, then at least one container 
-must contain more than one item. 
+# pigeonhole principle - states that if items are put into containers, with, then at least one container 
+# must contain more than one item. 
 
 # if we can modify the array
 def detect_Dupli(nums):
@@ -39,18 +39,18 @@ class Solution:
 
 
 #2 You are given an array of arrays of integers, where each array corresponds to a row in a triangle of numbers. 
-For example, [[1], [2, 3], [1, 5, 1]] represents the triangle:
+# For example, [[1], [2, 3], [1, 5, 1]] represents the triangle:
 
-  1
- 2 3
-1 5 1
+#   1
+#  2 3
+# 1 5 1
 
-The weight of the path is the sum of the entries, which would be 1+3+5 = 9 in this case
+# The weight of the path is the sum of the entries, which would be 1+3+5 = 9 in this case
 
 
-#First thing to do is to figure out the approach
-#We can always start from the bottom row, and move up row by row
-#but when we move up row by row, we should only check two adjacent elements on that row
+# First thing to do is to figure out the approach
+# We can always start from the bottom row, and move up row by row
+# but when we move up row by row, we should only check two adjacent elements on that row
 
 def findmaxpath(nums):
        n = len(nums) - 1       # get the index of the last row, i.e. the bottom row
@@ -147,3 +147,43 @@ arr = [0, 2, 1, 3, 0]
 n = len(arr)
 print(find_path(arr, n))
      
+# 5 The edit distance between two strings refers to the minimum number of character insertions, deletions, and substitutions required to change one string to the other. 
+# For example, the edit distance between “kitten” and “sitting” is three: substitute the “k” for “s”, substitute the “e” for “i”, and append a “g”.
+# Given two strings, compute the edit distance between them.
+def cal_editdistance(string_1, string_2):
+    arr1 = []; arr2 = []
+    edit_dist = 0
+    for i in string_1:
+        arr1.append(i)
+        
+    for j in string_2:
+        arr2.append(j)
+
+    for i in range(min(len(arr1), len(arr2))):
+        if arr1[i] != arr2[i]:
+            edit_dist += 1
+    
+    edit_dist = edit_dist + abs((len(arr2)-len(arr1)))
+    return edit_dist
+    
+
+string_1 = "kitten"
+string_2 = "sitting"
+
+print(cal_editdistance(string_1, string_2))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
