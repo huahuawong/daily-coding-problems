@@ -248,5 +248,23 @@ C = len(a[0])
 # Function Call 
 spiralPrint(R, C, a) 
 
+############################################################################################################################
+# Q6 Run-length encoding is a fast and simple method of encoding strings. The basic idea is to represent repeated successive characters as a single count and 
+# character. For example, the string "AAAABBBCCDAA" would be encoded as "4A3B2C1D2A".
 
-
+# Implement run-length encoding and decoding. You can assume the string to be encoded have no digits and consists solely of alphabetic characters. You can assume 
+# the string to be decoded is valid.
+def encode(st, n):
+	i = 0
+	while i < n-1:
+		count = 1
+		while i < (n-1) and st[i] == st[i+1]:
+			count += 1
+			i += 1
+		i += 1
+		print(st[i - 1] + str(count), end = "")
+		
+		
+string = "AAAABBBCCDAA"
+n = len(string)
+print(encode(string, n))
