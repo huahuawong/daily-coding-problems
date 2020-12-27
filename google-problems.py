@@ -173,7 +173,30 @@ string_2 = "sitting"
 print(cal_editdistance(string_1, string_2))
 
 
+# 6 This problem was asked by Google.
+# Given an array of integers, return a new array where each element in the new array is the number of smaller elements to the right of that element 
+# in the original input array.
 
+def find_smallest(arr, n):
+    count_arr = []
+    i = 0
+    while len(count_arr) != len(arr):
+        cur_elem  = arr[i]
+        j = i + 1
+        count = 0
+        while j < len(arr):
+            if cur_elem > arr[j]:
+                count += 1
+                j += 1
+            else: 
+                j += 1
+        count_arr.append(count)
+        i += 1
+    return count_arr
+    
+
+arr = [5, 7, 3, 8, 1]
+print(find_smallest(arr, len(arr)))
 
 
 
