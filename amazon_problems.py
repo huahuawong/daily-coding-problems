@@ -268,3 +268,42 @@ def encode(st, n):
 string = "AAAABBBCCDAA"
 n = len(string)
 print(encode(string, n))
+
+############################################################################################################################
+# Q7 An sorted array of integers was rotated an unknown number of times.
+# Given such an array, find the index of the element in the array in faster than linear time. If the element doesn't exist in the array, return null.
+
+# For example, given the array [13, 18, 25, 2, 8, 10] and the element 8, return 4 (the index of 8 in the array). You can assume all the integers in the array are unique.
+# Since we are trying to do better than linear time, we can do log(n), which is the time complexity of log(n)
+# Question is how do we incorporate it, we know that the array is rotated, so we just need to find the picot point. First, we initialize the pivot as the middle, i.e.
+# (len(arr) //2), using this pivot, let's see if the array from arr[0] to arr[mid] is sorted, if it is, great! We can try searching if the key is within this span
+# of array, if it is, then we keep doing binary search from arr[low] to arr[mid -1], else we know that it has to be on the other half of the array, so we search from
+# arr[mid+1] to arr[high]
+
+# If arr[low] to arr[mid] was not sorted, then do the same thing but reversed. Why do we have to make sure it's sorted you asking? That is because binary search 
+# works only on a sorted set of elements. To use binary search on a collection, the collection must first be sorted
+
+def search(arr, low, high, key):
+    mid = int((low + high)/2)
+    if arr[mid] == key:
+        return mid
+
+    # If arr[low to mid] is sorted
+    if arr[low] <= arr[mid]:
+        if arr[low] <= key and arr[mid] >= key:
+            return search(arr, low, mid -1, key)
+        return search(arr, mid+1, high, key)
+
+    if key >= arr[mid] and key <= arr[high]:
+        return search(arr, mid+1, high, key)
+    return search(arr, low, mid-1, key)
+
+
+# Driver program
+arr = [9, 10, 11, 1, 2, 3, 4, 5, 6, 7, 8]
+key = 6
+i = search(arr, 0, len(arr) - 1, key)
+if i != -1:
+    print("Index: % d" % i)
+else:
+    print("Key not found")
