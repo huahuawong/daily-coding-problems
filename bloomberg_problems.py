@@ -1,3 +1,5 @@
+# Q1 Determine whether there exists a one-to-one character mapping from one string s1 to another s2
+
 def isIsomorphic(s, t):
     s2t, t2s = {}, {}
     for i in range(len(s)):
@@ -12,3 +14,4 @@ def isIsomorphic(s, t):
 
 str1 = "aab"; str2 = "xyy"
 print(isIsomorphic(str1, str2))
+
