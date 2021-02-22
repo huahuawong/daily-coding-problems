@@ -173,7 +173,53 @@ k = 49
 print(find_subarraysum(arr, k))
 
 
+# Q4
+# You are given an string representing the initial conditions of some dominoes. Each element can take one of three values:
 
+#     L, meaning the domino has just been pushed to the left,
+#     R, meaning the domino has just been pushed to the right, or
+#     ., meaning the domino is standing still.
+
+# Determine the orientation of each tile when the dominoes stop falling. Note that if a domino receives a force from the left and right side simultaneously, 
+# it will remain upright. For example, given the string .L.R....L, you should return LL.RRRLLL.
+# Basically, the idea is to use 2 array appraoch. First, we initialize an array of zeroes of length n. or the first array, we iterate through the string and determine
+# the right positions. If val = "R", then rDist variable = 0, if it's L, then nothing changes, else if rDist is not None, which means R was present prior to that, then
+# we'd increment rDist and mark the rDist value at the dist.
+
+# Similar thing is done for the left array, except we are iterating from the right to the left. If there is "L", then set lDist = 0, the difference is that right now,
+# if lDist is not None, then we have to see if lDist < dist[i] or the current point is a ".", then we assign "L". If lDist == dist[i], that means it was moving "R", and
+# that means, they'll be canceled out, thus it will be in "." state
+
+def pushDominoes(dominoes):
+    """
+    :type dominoes: str
+    :rtype: str
+    """
+    lst = list(dominoes)
+    dist = [0] * len(dominoes)
+    rDist = None
+    for i, val in enumerate(lst):
+        if val == 'R':
+            rDist = 0
+        elif val == 'L':
+            rDist = None
+        elif rDist != None:
+            rDist += 1
+            dist[i] = rDist
+            lst[i] = 'R'
+    lDist = None
+    for i in range(len(lst) - 1, -1, -1):
+        if dominoes[i] == 'L':
+            lDist = 0
+        elif dominoes[i] == 'R':
+            lDist = None
+        elif lDist != None:
+            lDist += 1
+            if lDist < dist[i] or lst[i] == '.':
+                lst[i] = 'L'
+            elif lDist == dist[i]:
+                lst[i] = '.'
+    return ''.join(lst)
 
 
 
