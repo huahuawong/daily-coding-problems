@@ -76,6 +76,23 @@ def find_integer(x, y, b):
 x = 3; y = 5; b = 1
 print(find_integer(x, y, b))
 
+# 4 Given a list of integers, return the largest product that can be made by multiplying any three integers.
+# For example, if the list is [-10, -10, 5, 2], we should return 500, since that's -10 * -10 * 5.
+from itertools import combinations  
+import numpy as np
+
+def find_prod(arr, n):
+    pairs_array = list(combinations(arr, n))
+    biggest = 0
+
+    for pair in pairs_array:
+        curr_mult = np.prod(pair)
+        biggest = max(biggest, curr_mult)
+    return biggest
+
+arr = [-10, -10, 5, 4]; n = 3
+print(find_prod(arr, n))
+
 
 
 
