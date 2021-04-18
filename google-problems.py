@@ -202,15 +202,25 @@ print(find_smallest(arr, len(arr)))
 # Given k sorted singly linked lists, write a function to merge all the lists into one sorted singly linked list.
 
 
+# 8. The power set of a set is the set of all its subsets. Write a function that, given a set, generates its power set.
+# For example, given the set {1, 2, 3}, it should return {{}, {1}, {2}, {3}, {1, 2}, {1, 3}, {2, 3}, {1, 2, 3}}.
+import math
 
+def powerset(set, set_size):
+    # find the expected number of subsets, which would be 2^n, where n is the length of the set
+    pow_set_size = (int)(math.pow(2, set_size))
+       
+    for counter in range(0, power_set_size):
+       for j in range(0, set_size):
+            # Check if jth element is a set, if it is a set, then print jth element from set
+            if (counter & (1 << j)) > 0:
+                print(set[j], end = "")
+            print("")
+    print("[]")
 
-
-
-
-
-
-
-
+# Driver program to test printPowerSet
+set = ['a', 'b', 'c']
+printPowerSet(set, 3)
 
 
 
