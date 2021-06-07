@@ -23,3 +23,32 @@ def get_strob(n_digits):
     
 print(get_strob(3))
         
+# Q2 This problem was asked by Twitter.
+# The 24 game is played as follows. You are given a list of four integers, each between 1 and 9, in a fixed order. By placing the operators +, -, *, and / between the numbers, and grouping them with parentheses, determine whether it is possible to reach the value 24.
+# For example, given the input [5, 2, 7, 8], you should return True, since (5 * 2 - 7) * 8 = 24.
+# Write a function that plays the 24 game.
+OPERATORS = {'+', '-', '*', '/'}
+TARGET = 24
+
+
+def possible(arr):
+    # Check if it is just of one length, if it is it has to be 24 or else it is False
+    if len(arr) == 1:
+        return arr[0] == TARGET
+
+    # initialize list to store all possibilities after doing arithmetic calculations
+    new_possibilities = list()
+
+    # Generating all possibilities of the operations
+    for si in range(len(arr) - 1):
+        for operator in OPERATORS:
+            num_1 = arr[si]
+            num_2 = arr[si + 1]
+            try:
+                possibility = arr[:si] + [eval("{}{}{}".format(num_1, operator, num_2))] + arr[si + 2:]
+                new_possibilities.append(possibility)
+            except Exception:
+                pass
+
+    return any([possible(x) for x in new_possibilities])
+
