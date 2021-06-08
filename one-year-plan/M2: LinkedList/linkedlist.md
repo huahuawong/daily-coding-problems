@@ -21,14 +21,16 @@ It is actually used in stacks and queues as well!
 1. First step is to create a class for the LinkedList:
 
 class LinkedList:\
-    def __init__(self):\
-        self.head = None
+&nbsp;&nbsp;def __init__(self):\
+&nbsp;&nbsp;&nbsp;self.head = None
         
         
 2. Next, create another class to represent each node of the linked list:
+
+
 class Node:\
-    def __init__(self, data):\
-        self.data = data\
-        self.next = None\
+&nbsp;&nbsp;def __init__(self, data):\
+&nbsp;&nbsp;&nbsp;self.data = data\
+&nbsp;&nbsp;&nbsp;self.next = None
 
 For the full syntax refer to the py file
