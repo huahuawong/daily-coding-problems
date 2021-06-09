@@ -128,114 +128,75 @@ class DLL:
         return f"The length of the Linked List is:  {self.count}"
 
     def reverse(self):
-        
-    # def insert_after_element(self, target, data):
-    #     for _ in range()
+        prev = None
+        current = self.head
+        while current != None:
+            next = current.next
+            current.next = prev
+            prev = current
+            current = next
+        self.head = prev
+
+    # 7. Define remove_element(int element) which deletes the first instance of the element (be careful if the
+    # element removed is at head or tail position).
+    def remove_element(self, data):
+        def index(data):
+            start = self.head
+            for i in range(self.count):
+                if (start.data == data):
+                    return i
+                start = start.next
+            return KeyError("Target does not exist in LL")
+
+        target_indice = index(data)
+        # print(f"The index is: {target_indice}  {self.count - 1}")
+
+        if target_indice == 0:
+            self.head = self.head.next
+            self.head.previous = None
+            self.count -= 1
+            return
+
+        if target_indice == (self.count - 1):
+            temp = self.head
+            # Keep iterating until we get the second last element
+            while (temp.next.next != None):
+                temp = temp.next
+            # Second last element is reached, set its 'next' to None
+            temp.next = None
+            self.count -= 1
+            return
+
+        start = self.head
+        for i in range(target_indice - 1):
+            start = start.next
+        # start.previous.next, start.next.previous = start.next, start.previous
+        next = start.next.next
+        start.next = None
+        start.next = next
+        self.count -= 1
+        return
+
+    # Lastly, define remove_duplicates() that’ll remove any repeating elements. For example,
+    # if your list is (2->3->22->4->2->3->5), it becomes (2->3->22->4->5).
+    def remove_duplicate(self):
+        distinct_list = []
+        start = self.head
+        for i in range(0, self.count):
+            if start.data in distinct_list:
+                self.remove_element(start.data)
+            else:
+                distinct_list.append(start.data)
+
+            start = start.next
+        return
 
 
 nums = DLL()
 nums.append('a'); nums.append('b'); nums.append('c'); nums.append('d'); nums.append('e')
+nums.append('a'); nums.append('b'); nums.append('z'); nums.append('f');
 nums.insert_to_start('g')
-nums.insert_to_end('f')
-# nums.insert_at_position('z', 2)
-# nums.insert_at_position('w', 11)
-# nums.insert_before_element('a', 'm')
-# nums.insert_after_element('a', 'h')
-# nums.print_list()
-# nums.size()
-
-
-
-#     # at a specified index,
-#     # 1. Make the node's 'previous' point to the new node, so we use start.previous.next
-#     # 2. Make the node's 'previous' point to the node before the position
-#     # 3. Make the node's 'next' point to 'start' which was the node previously at that location
-#     # 4. Make the node (that was previously at that location)'s 'previous' point to the new node
-#     start = self.head
-#     for _ in range(index):
-#         start = start.next
-#     start.previous.next = Node(data)
-#     start.previous.next.previous = start.previous
-#     start.previous.next.next = start
-#     start.previous = start.previous.next
-#     self.count += 1
-#     return
-#
-# def insert(self, data, index):
-#     # When it is out of range
-#     if (index > self.count) | (index < 0):
-#         raise ValueError(f"Index out of range: {index}, size: {self.count}")
-#
-#     # This is for inserting at the end of the Linked List, we could just simply append it
-#     if (index == self.count):
-#         self.append(data)
-#         return
-#
-#     # Inserting at the front, make the first node’s previous point to the new node, then make the new node’s next point
-#     # to the first node, and finally, we make the head point to the new node.
-#     if (index == 0):
-#         self.head.previous = Node(data)
-#         self.head.previous.next = self.head
-#         self.head = self.head.previous
-#         self.count += 1
-#         return
-#
-#     # at a specified index,
-#     # 1. Make the node's 'previous' point to the new node, so we use start.previous.next
-#     # 2. Make the node's 'previous' point to the node before the position
-#     # 3. Make the node's 'next' point to 'start' which was the node previously at that location
-#     # 4. Make the node (that was previously at that location)'s 'previous' point to the new node
-#     start = self.head
-#     for _ in range(index):
-#         start = start.next
-#     start.previous.next = Node(data)
-#     start.previous.next.previous = start.previous
-#     start.previous.next.next = start
-#     start.previous = start.previous.next
-#     self.count += 1
-#     return
-
-
-
-
-#
-#
-# def remove(self, index):
-#     if (index >= self.count) | (index < 0):
-#         raise ValueError(f"Index out of range: {index}, size: {self.count}")
-#
-#     if index == 0:
-#         self.head = self.head.next
-#         self.head.previous = None
-#         self.count -= 1
-#         return
-#
-#     if index == (self.count - 1):
-#         self.tail = self.tail.previous
-#         self.tail.next = None
-#         self.count -= 1
-#         return
-#
-#     start = self.head
-#     for i in range(index):
-#         start = start.next
-#     start.previous.next, start.next.previous = start.next, start.previous
-#     self.count -= 1
-#     return
-#
-#
-# def index(self, data):
-#     start = self.head
-#     for i in range(self.count):
-#         if (start.data == data):
-#             return i
-#         start = start.next
-#     return None
-#
-#
-# def size(self):
-#     return self.count
-#
-#
-# def display(self):
-#     print(self)
+nums.insert_to_end('f'); nums.insert_to_end('f')
+nums.remove_element('d')
+nums
+nums.remove_duplicate()
