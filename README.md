@@ -1,4 +1,4 @@
-# glowing-waffle
+# Daily Coding Problems
 
 Just to build codes, mostly from Daily Coding problem and Leetcode. Generally comments the code to help everyone understand better.
 
