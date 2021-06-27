@@ -49,11 +49,44 @@ def find_inc_subsequence(nums):
     return np.sum(arr)
 
 
-# Q3.
+# Q3. Given an array nums of n integers and an integer target, find three integers in nums such that the sum is
+# closest to target. Return the sum of the three integers. You may assume that each input would have exactly
+# one solution.
+
+nums = [-1,2,1,-4]; target = 1
+# expected output: 2  since (-1 + 2 + 1 = 2)
+
+from itertools import permutations
+import numpy as np
+
+p = permutations(nums, 3)
+min = float('inf')
+
+# Brute force: Generate all permutations and evalute the set which would be the closest to target, However this solution
+# may result in time limit exceeded
+# Print the obtained permutations
+for combo in list(p):
+    # print(combo)
+    cur_sum = np.sum(combo)
+    if abs(cur_sum - target) < abs(min - target):
+        min = cur_sum
 
 
+# Second solution, using sort and 2 pointer system
+nums.sort()
+min = float('inf')
 
-
-
+for i in range(len(nums)):
+    j, k = i + 1, len(nums) - 1
+    while j <k:
+        cur_sum = nums[i] + nums[j] + nums[k]
+        # if cur_sum == target:
+        #     return cur_sum
+        if abs(cur_sum - target) < abs(min - target):
+            min = cur_sum
+        if cur_sum > target:
+            k -= 1
+        else:
+            j += 1
 
 
