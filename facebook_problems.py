@@ -94,7 +94,7 @@ arr = [-10, -10, 5, 4]; n = 3
 print(find_prod(arr, n))
 
 
-# This problem was asked by Facebook.
+# 5 This problem was asked by Facebook.
 
 # Implement regular expression matching with the following special characters:
 #     . (period) which matches any single character
@@ -110,4 +110,9 @@ print(find_prod(arr, n))
 
 
 
-StockInvest.us
+
+# 6 Given a list of integers, return the largest product that can be made by multiplying any three integers.
+# For example, if the list is [-10, -10, 5, 2], we should return 500, since that's -10 * -10 * 5.
+# You can assume the list has at least three integers.
+
+
