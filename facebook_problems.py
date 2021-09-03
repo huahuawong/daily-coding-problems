@@ -115,4 +115,27 @@ print(find_prod(arr, n))
 # For example, if the list is [-10, -10, 5, 2], we should return 500, since that's -10 * -10 * 5.
 # You can assume the list has at least three integers.
 
+# 1. Brute force approach
+import itertools
+import numpy as np
 
+def find_max_prod(arr):
+    max_prod = 0
+
+    for i in itertools.permutations(arr, 3):
+        # print(i)
+        # print(np.prod(i))
+        prod = np.prod(i)
+        if max_prod < prod:
+            max_prod = prod
+    return max_prod
+
+arr = [-10, -10, 5, 2]
+find_max_prod(arr)
+
+# 2. We know that if given a sorted array, the biggest prod will either be the product of 2 smallest integer (assuming
+# negative number) and the largest number (rightmost number) or the 3 largest numbers from the right
+
+def find_max_prod(arr):
+    arr.sort()    
+    return max((arr[0] * arr[1] * arr[-1]), arr[-1] * arr[-2] * arr[-3])
