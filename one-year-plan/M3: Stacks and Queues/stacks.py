@@ -48,18 +48,51 @@ q.check_empty()
 
 
 # 2. Implement 2 stacks in a single array.
-class Queue:
+class two_stacks:
     def __init__(self):
         self.s1 = []
+        self.count1 = 0
+        self.count2 = 0
 
     def enqueue_first(self, x):
         self.s1.append(x)
+        self.count1 += 1
 
     def enqueue_second(self, x):
-        self.s1.append(x)
+        if self.count2 == 0:
+            self.s1.insert(len(self.s1), x)
+            self.count2 += 1
+            return
+        self.s1.insert(len(self.s1) - self.count2, x)
+        self.count2 += 1
+
+    def dequeue_first(self):
+        if self.count1 == 0:
+            return "First stack is now empty"
+        temp = self.s1.pop(self.count1 - 1)
+        self.count1 -= 1
+        return str(temp) + " popped from first stack"
+
+    def dequeue_second(self):
+        if self.count2 == 0:
+            return "Second stack is now empty"
+        temp = self.s1.pop(len(self.s1) - self.count2)
+        self.count2 -= 1
+        return str(temp) + " popped from second stack"
 
 
-arr = []
-arr.append(2)
-arr.append(2)
-arr.insert(8, 5)
+q2 = two_stacks()
+q2.enqueue_first(1)
+q2.enqueue_first(2)
+q2.enqueue_first(3)
+q2.enqueue_second(4)
+q2.enqueue_second(5)
+q2.enqueue_second(6)
+q2.dequeue_second()
+q2.dequeue_first()
+
+# 3. Implement 3 stacks in a single array.
+
+
+# 4. Design a stack with the following methods: Push, pop, peek, get_min, get_max. All of them should be O(1).
+
