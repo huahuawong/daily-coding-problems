@@ -144,6 +144,26 @@ def find_max_prod(arr):
 # 6 Given a string of round, curly, and square open and closing brackets, return whether the brackets are balanced (well-formed).
 # For example, given the string "([])[]({})", you should return true.
 # Given the string "([)]" or "((()", you should return false.
+def find_match(string):
+    brac1 = ["(", "[", "{"]
+    brac2 = [")", "]", "}"]
+
+    arr = []
+    for character in string:
+        if character in brac1:
+            arr.append(character)
+        elif character in brac2:
+            if brac2.index(character) == brac1.index(arr[-1]):
+                arr.pop()
+            else:
+                return False
+        else:
+            return "There is an unrecognised character in the string"
+    return len(arr) == 0
+
+
+string = '([])[]({})'
+print(find_match(string))
 
 
 
