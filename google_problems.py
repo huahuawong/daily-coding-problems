@@ -222,5 +222,51 @@ def powerset(set, set_size):
 set = ['a', 'b', 'c']
 printPowerSet(set, 3)
 
+# 9. This problem was asked by Google.
+
+# The area of a circle is defined as πr^2. Estimate π to 3 decimal places using a Monte Carlo method.
+# Hint: The basic equation of a circle is x2 + y2 = r2.
+
+# The keyword here is 'estimate', we are not calculating and are merely estimating
+# Second thing, what is Monte Carlo method? It is also known as a multiple probability simulation, which means we generate a list of possible outcomes and based on them, we can get a numerical result
+
+# Now, how do we bring Monte Carlo method to calculate area of a circle. We know that equation of circle is x^2 _ y^2 = r^2. Assuming that r = 1, we'd have x^2 + y^2 = 1. 
+# Now what we have to do is to think generate a list of possible outcomes using what? x and y. And we can see if it falls inside the circle, by checking if x^2 + y^2 <= 1
+
+# This link explained it well with diagrams for clarity: https://www.geeksforgeeks.org/estimating-value-pi-using-monte-carlo/
+
+import random
+
+def estimate_pi(INTERVAL):
+       circle_points= 0
+       square_points= 0
+
+       # Total Random numbers generated= possible x
+       # values* possible y values
+       for i in range(INTERVAL**2):
+
+              # Randomly generated x and y values from a
+              # uniform distribution
+              # Range of x and y values is -1 to 1
+              rand_x= random.uniform(-1, 1)
+              rand_y= random.uniform(-1, 1)
+
+              # Distance between (x, y) from the origin
+              origin_dist= rand_x**2 + rand_y**2
+
+              # Checking if (x, y) lies inside the circle
+              if origin_dist<= 1:
+                     circle_points+= 1
+
+              square_points+= 1
+
+              # Estimating value of pi,
+              # pi= 4*(no. of points generated inside the
+              # circle)/ (no. of points generated inside the square)
+              pi = 4* circle_points/ square_points
+     return pi
+
+## print(rand_x, rand_y, circle_points, square_points, "-", pi)
+print("Final Estimation of Pi=", estimate_pi(100))
 
 
