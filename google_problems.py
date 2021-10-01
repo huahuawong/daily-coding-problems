@@ -234,39 +234,32 @@ printPowerSet(set, 3)
 # Now what we have to do is to think generate a list of possible outcomes using what? x and y. And we can see if it falls inside the circle, by checking if x^2 + y^2 <= 1
 
 # This link explained it well with diagrams for clarity: https://www.geeksforgeeks.org/estimating-value-pi-using-monte-carlo/
-
 import random
 
 def estimate_pi(INTERVAL):
-       circle_points= 0
-       square_points= 0
+    circle_points = 0
+    square_points = 0
 
-       # Total Random numbers generated= possible x
-       # values* possible y values
-       for i in range(INTERVAL**2):
+    # Total Random numbers generated= possible x
+    # values* possible y values
+    for i in range(INTERVAL**2):
+        # Randomly generated x and y values from a uniform distribution. Range of x and y values is -1 to 1
+        rand_x = random.uniform(-1, 1)
+        rand_y = random.uniform(-1, 1)
 
-              # Randomly generated x and y values from a
-              # uniform distribution
-              # Range of x and y values is -1 to 1
-              rand_x= random.uniform(-1, 1)
-              rand_y= random.uniform(-1, 1)
+        # Distance between (x, y) from the origin
+        origin_dist= rand_x**2 + rand_y**2
 
-              # Distance between (x, y) from the origin
-              origin_dist= rand_x**2 + rand_y**2
+        # Checking if (x, y) lies inside the circle
+        if origin_dist<= 1:
+            circle_points+=1
+            square_points+=1
 
-              # Checking if (x, y) lies inside the circle
-              if origin_dist<= 1:
-                     circle_points+= 1
-
-              square_points+= 1
-
-              # Estimating value of pi,
-              # pi= 4*(no. of points generated inside the
-              # circle)/ (no. of points generated inside the square)
-              pi = 4* circle_points/ square_points
-     return pi
-
-## print(rand_x, rand_y, circle_points, square_points, "-", pi)
-print("Final Estimation of Pi=", estimate_pi(100))
+            # Estimating value of pi, pi= 4*(no. of points generated inside the
+            # circle)/ (no. of points generated inside the square)
+            pi = 4 * circle_points/ square_points
+    return pi
 
 
+# print(rand_x, rand_y, circle_points, square_points, "-", pi)
+print("Final Estimation of Pi=", estimate_pi(5))
