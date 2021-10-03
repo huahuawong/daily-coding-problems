@@ -253,11 +253,11 @@ def estimate_pi(INTERVAL):
         # Checking if (x, y) lies inside the circle
         if origin_dist<= 1:
             circle_points+=1
-            square_points+=1
+        square_points+=1
 
-            # Estimating value of pi, pi= 4*(no. of points generated inside the
-            # circle)/ (no. of points generated inside the square)
-            pi = 4 * circle_points/ square_points
+        # Estimating value of pi, pi= 4*(no. of points generated inside the
+        # circle)/ (no. of points generated inside the square)
+        pi = 4 * circle_points/ square_points
     return pi
 
 
