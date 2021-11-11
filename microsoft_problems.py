@@ -223,3 +223,32 @@ def pushDominoes(dominoes):
 
 
 
+# Q5 This problem was asked by Microsoft.
+# Compute the running median of a sequence of numbers. That is, given a stream of numbers, print out the median of
+# the list so far on each new element.
+#
+# Recall that the median of an even-numbered list is the average of the two middle numbers.
+#
+# For example, given the sequence [2, 1, 5, 7, 2, 0, 5], your algorithm should print out:
+
+# 2
+# 1.5
+# 2
+# 3.5
+# 2
+# 2
+# 2
+
+seq = [2, 1, 5, 7, 2, 0, 5]
+
+curr_seq = []
+
+for num in seq:
+    curr_seq.append(num)
+    # Even length
+    if len(curr_seq) % 2 == 0:
+        curr_seq = sorted(curr_seq)
+        print((curr_seq[int(len(curr_seq)/2)] + curr_seq[int(len(curr_seq)/2) - 1])/ 2)
+    else:
+        curr_seq = sorted(curr_seq)
+        print(curr_seq[int(len(curr_seq)/2)])
