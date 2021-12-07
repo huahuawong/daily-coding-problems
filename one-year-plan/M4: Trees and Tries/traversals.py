@@ -22,13 +22,13 @@ class BinaryTree:
         else:
             self.data = data
 
-    # Print the Tree
-    def PrintTree(self):
+    # Print the Tree, this is actually post-order traversal printing
+    def print_tree(self):
         if self.left_child:
-            self.left_child.PrintTree()
-        print( self.data),
+            self.left_child.print_tree()
         if self.right_child:
-            self.right_child.PrintTree()
+            self.right_child.print_tree()
+        print(self.data)
 
     def in_order(self):
         if self.left_child:
@@ -38,6 +38,15 @@ class BinaryTree:
 
         if self.right_child:
             self.right_child.in_order()
+
+    def pre_order(self):
+        print(self.data)
+
+        if self.left_child:
+            self.left_child.pre_order()
+
+        if self.right_child:
+            self.right_child.pre_order()
 
     def post_order(self):
         if self.left_child:
@@ -56,6 +65,7 @@ root.insert(10)
 root.insert(19)
 root.insert(31)
 root.insert(42)
-# root.PrintTree()
+root.print_tree()
 # root.in_order()
+root.pre_order()
 root.post_order()
