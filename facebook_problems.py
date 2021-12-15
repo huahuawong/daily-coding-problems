@@ -165,5 +165,44 @@ def find_match(string):
 string = '([])[]({})'
 print(find_match(string))
 
+# There is an N by M matrix of zeroes. Given N and M, write a function to count the number of ways of starting at the top-left corner and getting to the bottom-right corner. You can only move right or down.
+
+# For example, given a 2 by 2 matrix, you should return 2, since there are two ways to get to the bottom-right:
+
+# Right, then down
+# Down, then right
+# Given a 5 by 5 matrix, there are 70 ways to get to the bottom-right.
+A = [[0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0]]
+
+
+def uniquePaths(A):
+    # create a 2D-matrix and initializing with value 0
+    paths = [[0] * len(A[0]) for i in A]
+
+    # initializing the left corner if no obstacle there
+    paths[0][0] = 1
+
+    # initializing first column of the 2D matrix
+    for i in range(1, len(A)):
+        paths[i][0] = paths[i - 1][0]
+
+    # initializing first row of the 2D matrix
+    for j in range(1, len(A[0])):
+        paths[0][j] = paths[0][j - 1]
+
+    for i in range(1, len(A)):
+        for j in range(1, len(A[0])):
+            paths[i][j] = paths[i - 1][j] + paths[i][j - 1]
+
+    # returning the corner value of the matrix
+    return paths[-1][-1]
+
+
+# Driver Code
+print(uniquePaths(A))
+
+
+
+
 
 
