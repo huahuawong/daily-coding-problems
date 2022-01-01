@@ -272,3 +272,4 @@ def find_longest(num):
 
 arr = [5, 1, 3, 5, 2, 3, 4, 1]
 print(find_longest(arr))
+
