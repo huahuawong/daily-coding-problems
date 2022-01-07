@@ -26,3 +26,11 @@ def deepestNode(root, levels):
 
 levels = height(root)
 deepestNode(root, levels)
+
+
+
+# This problem was asked by Yext.
+# Two nodes in a binary tree can be called cousins if they are on the same level of the tree but have different parents. For example, in the following diagram 4 and 6 are cousins
+
+
+
