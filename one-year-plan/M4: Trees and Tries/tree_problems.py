@@ -31,6 +31,47 @@ deepestNode(root, levels)
 
 # This problem was asked by Yext.
 # Two nodes in a binary tree can be called cousins if they are on the same level of the tree but have different parents. For example, in the following diagram 4 and 6 are cousins
+def findlevel(root, target, index=1, level=0):
+  if root is None or level != 0:
+    return 0
+  if root == target:
+    level = index
+  level = findlevel(root.left, target, index+1, level)
+  level = findlevel(root.right, target, index+1, level)
+  return level
+
+def printLevel(root, target, level):
+  # base case
+  if root is None:
+      return
+
+  # print cousins
+  if level == 1:
+      print(root.key, end=' ')
+      return
+  
+  # recur for the left and right subtree if the given node
+  # is not a child of the root
+  if (not (root.left is not None and root.left == node or
+           root.right is not None and root.right == node)):
+      printLevel(root.left, node, level - 1)
+      printLevel(root.right, node, level - 1)
+      
+# Function to print all cousins of a given node
+def printAllCousins(root, node):
+  # base case
+  if not root or root == node:
+      return
+
+  # find the level of the given node
+  level = findLevel(root, node)
+  print("Found level:", level)
+
+  # print all cousins of the given node using its level number
+  printLevel(root, node, level)
+
+
+
 
 
 
