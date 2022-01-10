@@ -3,13 +3,21 @@
 def reverseList(self, head: ListNode):
     prev = None
     curr = head
-    while curr != None:
-        next = curr.next
+    while curr:
+        tmp = curr.next
         curr.next = prev
         prev = curr
-        curr = next
+        curr = tmp
     head = prev
     return head
+
+def reverseList(head, prev=None):
+    if not head:
+        return prev
+    next = head.next
+    head.next = prev
+    return self.reverseList(next, head)
+
 
 # Q2. LC 21 Merge Two Sorted Lists
 # Merge two sorted linked lists and return it as a sorted list. The list should be made by splicing together the nodes
