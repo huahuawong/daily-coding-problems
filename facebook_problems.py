@@ -201,8 +201,12 @@ def uniquePaths(A):
 # Driver Code
 print(uniquePaths(A))
 
+# Given an array of integers out of order, determine the bounds of the smallest window that must be sorted in order for the entire array to be sorted. 
+# For example, given [3, 7, 5, 6, 9], you should return (1, 3).
 
-
+# There are 2 ways to do it:
+# 1. Get an array which is a sorted version, and then iterate through the array and look at which index is it when the numbers dont match up, continue until you reach next index where the numbers matched
+# 2. Scan from left to right, and find the index where the elements of the current index is bigger than the next element. Now scan from right to left, find the index where the current element is smaller than the next element. Check if it is sorted if you sort the unsorted subarray
 
 
 
