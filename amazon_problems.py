@@ -364,3 +364,44 @@ words_split = get_list_strings(words)
 # Each method should run in constant time
 
 
+# This problem was asked by Amazon.
+
+# Given a N by M matrix of numbers, print out the matrix in a clockwise spiral.
+# For example, given the following matrix:
+
+mat = [[1,  2,  3,  4,  5, 55],
+       [6,  7,  8,  9,  10, 66],
+       [11, 12, 13, 14, 15, 77],
+       [16, 17, 18, 19, 20, 88],
+       [111, 122, 133, 144, 155, 166]]
+
+
+height = len(mat)
+length = len(mat[0])
+
+cur_height_s = 0; cur_height_m = height
+cur_length_s = 0; cur_length_m = length
+
+counter = 0
+
+while counter != height * length:
+    for i in range(cur_length_s, cur_length_m - 1):
+        print(mat[cur_length_s][i])
+        counter += 1
+
+    for j in range(cur_height_s, cur_height_m - 1):
+        print(mat[j][cur_height_m])
+        counter += 1
+
+    for i in range(cur_length_m - 1, cur_length_s, -1):
+        print(mat[cur_height_m - 1][i])
+        counter += 1
+
+    cur_height_s += 1; cur_height_m -= 1
+    for j in range(cur_height_m, cur_height_s -1, -1):
+        print(mat[j][cur_length_s])
+        counter += 1
+
+    cur_length_s += 1; cur_length_m -= 1
+
+
