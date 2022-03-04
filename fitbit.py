@@ -1,4 +1,4 @@
-# Q!
+# Q1
 # Given a linked list, rearrange the node values such that they appear in alternating low -> high -> low -> high ... form. 
 # For example, given 1 -> 2 -> 3 -> 4 -> 5, you should return 1 -> 3 -> 2 -> 5 -> 4.
 
@@ -73,3 +73,14 @@ if __name__ == '__main__':
 
 	head = rearrange(head)
 	printList(head)
+
+	
+# Q2 Write a Python Program to Check Common Letters in Two Input Strings?
+s1 = ("Hello world")
+s2 = ("Hey")
+
+common_letters = list((set(s1) & set(s2)))
+
+for letter in common_letters:
+    print(letter)
+
