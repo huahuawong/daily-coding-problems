@@ -252,3 +252,47 @@ for num in seq:
     else:
         curr_seq = sorted(curr_seq)
         print(curr_seq[int(len(curr_seq)/2)])
+        
+        
+# Q6. Implement a URL shortener with the following methods:
+#
+# shorten(url), which shortens the url into a six-character alphanumeric string, such as zLg6wl.
+# restore(short), which expands the shortened string into the original url. If no such shortened string exists,
+# return null.
+
+import random
+
+URL_Dict = dict()
+alphabets = "abcdefghijklmnopqrstuvwxyz"
+numbers = "0123456789"
+alnum = list(alphabets+alphabets.upper()+numbers)
+
+
+url = "https://www.google.com/"
+short = "1405Dx"    # shortened url from random choice of alnum
+
+
+def shorten(long_url):
+    for shortURL in URL_Dict.keys():
+        if URL_Dict[shortURL] == long_url:
+            return f"This URL has already been shortened and stored, the shorted URL is {shortURL}"
+    short_url = ""
+    while len(short_url) < 6:
+        short_url += random.choice(alnum)
+    URL_Dict[short_url] = long_url
+    if short_url in URL_Dict.keys():
+        return ""
+    return short_url
+
+
+def restore(short_url):
+    for short in URL_Dict.keys():
+        if short == short_url:
+            return URL_Dict[short]
+    return "No such shortened URL exist"
+
+
+print(shorten(url))
+print(restore("1405Dx"))
+
+
