@@ -209,3 +209,35 @@ print(uniquePaths(A))
 # 2. If its not sorted, look for the minimum and maximum of the subarray. Check if there is any element bigger than this number for arr[0:start_index], repeat for the end index
 
 
+
+# This problem was asked by Facebook.
+#
+# Given the mapping a = 1, b = 2, ... z = 26, and an encoded message, count the number of ways it can be decoded.
+# For example, the message '111' would give 3, since it could be decoded as 'aaa', 'ka', and 'ak'.
+
+# You can assume that the messages are decodable. For example, '001' is not allowed.
+
+def check_num_decode(s):
+    if len(s) == 0 or (len(s) == 1 and s[-1] == '0'):
+        # meaning it's empty or just one digit, so only one possible decoding
+        return 0
+    if len(s) == 1 and s[-1] != '0':
+        return 1
+    return decode_helper(s, len(s))
+
+
+def decode_helper(s, n):
+    if n == 0 or n == 1:
+        return 1
+    count = 0
+    if s[n - 1] > "0":
+        count = decode_helper(s, n - 1)
+    if s[n - 2] == '1' or (s[n - 2] == '2' and s[n - 1] < '7'):
+        count += decode_helper(s, n - 2)
+    return count
+
+
+# Driver code
+digits = "1234"
+print("Count is ", check_num_decode(digits))
+
