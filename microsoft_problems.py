@@ -295,4 +295,8 @@ def restore(short_url):
 print(shorten(url))
 print(restore("1405Dx"))
 
+# Q6. The transitive closure of a graph is a measure of which vertices are reachable from other vertices. It can be represented as a matrix M, 
+# where M[i][j] == 1 if there is a path between vertices i and j, and otherwise 0.
+
+
 
