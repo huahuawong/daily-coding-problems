@@ -279,4 +279,83 @@ print(find_longest(arr))
 
 # In this example, assume nodes with the same value are the exact same node objects.
 # Do this in O(M + N) time (where M and N are the lengths of the lists) and constant space.
+# 1. Method 1, use 2 loops, with outer loop traversing through the first list, and the inner loop traversing through
+# the inner loop. In the inner loop, check if any element in the 2nd list same as the current node from the first
+# linked list.
+# Time complexity: O(M * N) time
+
+# 2. Method 2, we can use 2 point traversals, which will take O(M+N) time.
+
+
+# A single node of a singly linked list
+class Node:
+    # constructor
+    def __init__(self, data=None, next=None):
+        self.data = data
+        self.next = next
+
+
+# A Linked List class with a single head node
+class LinkedList:
+    def __init__(self):
+        self.head = None
+
+    # insertion method for the linked list
+    def insert(self, data):
+        newNode = Node(data)
+        if (self.head):
+            current = self.head
+            while (current.next):
+                current = current.next
+            current.next = newNode
+        else:
+            self.head = newNode
+
+    # print method for the linked list
+    def printLL(self):
+        current = self.head
+        while (current):
+            print(current.data)
+            current = current.next
+
+
+def find_intersect_point(l_list1, l_list2):
+    # First we want to have 2 pointers
+    ptr1 = l_list1.head
+    ptr2 = l_list2.head
+
+    if (ptr1 == None) or (ptr2 == None):
+        return None
+
+    # We know it intersects at some point, so we just have to traverse through the lists, and reassign pointers if the
+    # the current value is 0
+    while ptr1 != ptr2:
+        ptr1 = ptr1.next
+        ptr2 = ptr2.next
+
+        if ptr1.data == ptr2.data:
+            return ptr1
+        if ptr1 == None:
+            ptr1 = l_list2.head
+        if ptr2 == None:
+            ptr2 = l_list1.head
+    return ptr1
+
+# Singly Linked List with insertion and print methods
+LL1 = LinkedList()
+LL1.insert(3)
+LL1.insert(7)
+LL1.insert(8)
+LL1.insert(10)
+# LL1.printLL()
+
+LL2 = LinkedList()
+LL2.insert(99)
+LL2.insert(1)
+LL2.insert(112)
+LL2.insert(10)
+# LL2.printLL()
+
+intersection = find_intersect_point(LL1, LL2)
+print(f'The intersection is at node {intersection.data}')
 
