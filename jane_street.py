@@ -39,6 +39,38 @@ uc.add_units(("yard", "chain"), (22, 1))
 # Testing to see if the unit converter works
 uc.convert("inch", 24, "foot")
 
+# Alternatively
+class UnitConverter:
+    def __init__(self):
+        self.metrics = {
+            "inch": 1,
+            "foot": 1 * 12,
+            "yard": 3 * 1 * 12,
+            "chain": 22 * 3 * 1 * 12,
+        }
+
+    def add_converts(self, new_unit, current_unit, value):
+        if current_unit not in self.metrics:
+            print(f"This unit {current_unit} does not exist")
+        self.metrics[new_unit] = self.metrics[current_unit] * value
+
+    def convert(self, orig_unit, result_unit, value):
+        if orig_unit not in self.metrics:
+            raise ValueError(f'{orig_unit} not found in the list')
+        if result_unit not in self.metrics:
+            raise ValueError(f'{result_unit} not found in the list')
+        return round(value * self.metrics[orig_unit] / self.metrics[result_unit], 5)
+
+
+if __name__ == "__main__":
+    uc = UnitConverter()
+    print(uc.convert("inch", "foot", 24))
+    print(uc.convert("inch", "yard", 36))
+    uc.add_converts("furlong", "chain", 10)
+    print(uc.convert("furlong", "yard", 36))
+    
+    
+    
 
 # Q2
 # Given integers M and N, write a program that counts how many positive integer pairs (a, b) satisfy the following conditions:
