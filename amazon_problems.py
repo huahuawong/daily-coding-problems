@@ -405,3 +405,33 @@ while counter != height * length:
     cur_length_s += 1; cur_length_m -= 1
 
 
+arr = [1, 2, 3, 10]
+
+
+# This problem was asked by Amazon.
+# Given a sorted array, find the smallest positive integer that is not the sum of a subset of the array.
+
+# For example, for the input [1, 2, 3, 10], you should return 7.
+# The idea is that we keep a candidate as 1, and we have to figure out what is the smallest positive integer that
+# cannot be made using the fist k elements of the array
+
+# THe plan is to scan from left to right, if at any point, the candidate is smaller than a value of the array, stop and
+# return the candidate, else we just keep updating the candidate by adding it with the value from the array
+
+
+def find_smallest_subset_sum(arr):
+    candidate = 1
+    for i in range(0, len(arr)):
+        if arr[i] > candidate:
+            return candidate
+        else:
+            candidate += arr[i]
+    return candidate
+
+
+assert(find_smallest_subset_sum(arr) == 7)
+assert(find_smallest_subset_sum([1, 3, 6, 10, 11, 15]) == 2)
+assert(find_smallest_subset_sum([1, 1, 1, 1]) == 5)
+assert(find_smallest_subset_sum([1, 2, 5, 10, 20, 40]) == 4)
+assert(find_smallest_subset_sum([1, 2, 3, 4, 5, 6]) == 22)
+
