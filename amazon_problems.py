@@ -441,6 +441,17 @@ assert(find_smallest_subset_sum([1, 2, 3, 4, 5, 6]) == 22)
 # Given such an array, find the index of the element in the array in faster than linear time. If the element doesn't exist in the array, return null.
 # For example, given the array [13, 18, 25, 2, 8, 10] and the element 8, return 4 (the index of 8 in the array).
 
+# This is the easiest way, but this might be O(n)?
+arr.index(num)
+
+# The idea is:
+# 1. Set a midpoint of the array
+# 2. Check if arr[0......mid] is sorted, if it is:
+# 	a. Check if num lies within the range of arr[0...mid], if it is then seach again for arr[0...mid-1]
+# 	b. If not, repeat for arr[mid + 1 to end of array]
+# 3. Repeat this for when the second part of the array is sorted
+
+
 def search(arr, low, high, num):
     mid = (low + high) // 2
     
