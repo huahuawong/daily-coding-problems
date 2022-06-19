@@ -441,3 +441,22 @@ assert(find_smallest_subset_sum([1, 2, 3, 4, 5, 6]) == 22)
 # Given such an array, find the index of the element in the array in faster than linear time. If the element doesn't exist in the array, return null.
 # For example, given the array [13, 18, 25, 2, 8, 10] and the element 8, return 4 (the index of 8 in the array).
 
+def search(arr, low, high, num):
+    mid = (low + high) // 2
+    
+    if arr[mid] == num:
+        return mid
+    
+    # How to check if arr[0], .... arr[mid] is sorted? check if first element is less than the mid element
+    if arr[low] < arr[mid]:
+        # If so, we can search within this range of elements recursively
+        if num >= arr[low] and num <= arr[mid]:
+            return search(arr, low, mid-1, num)
+        return search(arr, mid + 1, high, num)
+    
+    # arr[mid...len(n)] should be sorted then
+    if num >= arr[mid] and num <= arr[high]:
+        return search(arr, mid + 1, high,  num)
+    return search(arr, low, mid-1, num)
+
+search(arr, 0, len(arr), 18)
