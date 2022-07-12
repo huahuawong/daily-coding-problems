@@ -5,7 +5,7 @@
 
 NO_OF_CHARS = 256
 
-def canformPalindrone(st):
+def canformPalindrone(word):
     # Create a count array and initialize
     # all values as 0
     count = [0] * NO_OF_CHARS
@@ -13,8 +13,8 @@ def canformPalindrone(st):
     # For each character in input strings,
     # increment count in the corresponding
     # count array
-    for i in range(0, len(st)):
-        count[ord(st[i])] = count[ord(st[i])] + 1
+    for i in range(0, len(word)):
+        count[ord(word[i])] = count[ord(word[i])] + 1
     # a little confusing but basically we count the characteres to check
     # if there is more than one odd values, cause if there is, then palindrone can;t be formed
 
@@ -35,6 +35,35 @@ def canformPalindrone(st):
 str = "mmo"
 print(canformPalindrone(str))
 
+# or we can just simply get the counts of each character
+def find_palin(word):
+    res = {}
+    for key in word:
+        if key in res:
+            res[key] += 1
+        else:
+            res[key] = 1
+        
+    count_values = list(res.values())
+    
+    odd = 0
+    for i in count_values:
+        if i % 2 == 0:
+            continue
+        else:
+            odd += 1
+            # print("At least one with odd count")
+    
+    if odd > 1:
+        return False
+    return True
+
+
+
+word = 'dabcbadz'
+print(find_palin(word))
+
+
 
 ############################################################################################################################
 #2 Given a sorted array, find the smallest positive integer that is not the sum of a subset of the array.
@@ -48,12 +77,12 @@ def findSmallest(arr, n):
     # or equal to 'res'. 
     for i in range (0, n ): 
         if arr[i] <= res: 
-            res = res + arr[i]   #the reason we increment by that is because if arr[i] is smaller or equals to res,
+            res += arr[i]   #the reason we increment by that is because if arr[i] is smaller or equals to res,
                                  #means that we can represent the numbers from 0 to i
         else: 
             break
     return res 
-    
+# time complexity would be O(n)    
     
 array = [1, 1, 3, 4] 
 n1 = len(array) 
