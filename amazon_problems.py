@@ -143,6 +143,39 @@ def longestSubstr(str, k):
 
 	# return longest substring found at str[begin..end]
 	return str[begin:end + 1]
+
+# Alternative method using sliding window approach
+
+def count_char(word):
+    s = set(word)
+    # Return the size of the set
+    return len(s)
+    
+def find_longest_substring(word, k):
+    string_list = []
+    substr = str()
+    for i in range(0, len(word)):
+        substr += word[i]
+        if count_char(substr) <= k and i == len(word) - 1:
+            string_list.append(substr)
+        elif count_char(substr) <= k:
+            continue
+        else:
+            sub = substr[:-1]
+            string_list.append(sub)
+            substr = substr[1:]
+    return string_list
+
+    
+word = 'abcbakwkwkwkwkwkwkwkswkwkwkw'; k = 3
+
+# print(count_char(word))
+s_list = find_longest_substring(word, k)
+print(s_list)
+
+
+
+
 ###
 ############################################################################################################################
 # Q4 Given a linked list and an integer k, remove the k-th node from the end of the list and return the head of the list.
