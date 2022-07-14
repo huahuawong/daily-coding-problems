@@ -117,3 +117,5 @@ def reverse(self):
     self.head = prev
 
 # Tree BFS
+# The Tree BFS pattern works by pushing the root node to the queue and then continually iterating until the queue is empty. For each iteration, we remove 
+# the node at the head of the queue and “visit” that node. After removing each node from the queue, we also insert all of its children into the queue.
