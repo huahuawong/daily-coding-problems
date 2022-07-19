@@ -59,6 +59,31 @@ arr = [0, -1, 2, -3, 1]
 n = len(arr)
 findTriplets(arr, n)
 
+
+# Another question is Squaring a sorted array (easy)
+# Given an integer array nums sorted in non-decreasing order, return an array of the squares of each number sorted in non-decreasing order.
+
+def squareArray(nums, n):
+    sq_arr = []
+    left = 0; right = n - 1
+    
+    while left <= right:
+        if abs(nums[left]) <= abs(nums[right]):
+            sq_arr.append(nums[right]**2)
+            right -= 1
+        else:
+            sq_arr.append(nums[left]**2)
+            left += 1            
+    return sq_arr[::-1]
+
+nums = [-7,-3,2,3,11]
+# nums = [-4,-1,0,3,10]
+n = len(nums)
+print(squareArray(nums, n))
+
+
+
+
 # 3. Fast and Slow pointers
 # The Fast and Slow pointer approach, also known as the Hare & Tortoise algorithm, is a pointer algorithm that uses two pointers which move 
 # through the array (or sequence/linked list) at different speeds. This approach is quite useful when dealing with cyclic linked lists or arrays
