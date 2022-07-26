@@ -101,6 +101,35 @@ def findcycle(head):
             
     return False
   
+# Another example is linkedlist palindrome
+# Easiest way is if we use a list and simply check if it's the same when reversed, but this is not efficient
+# Alternatively, we can use slow and fast pointer. The idea is to use 2 pointers to reach the midpoint and then traverse in a reversed order manner
+def palindromeLinkedList(head):
+  fast = slow = head 
+  # This condition will allow the traversal to stop at midpoint
+  while fast != None and fast.next != None:
+    slow = slow.next
+    fast = fast.next.next
+    
+  prev = None; next = None
+  while slow:
+    next = slow.next
+    slow.next = prev
+    prev = slow
+    slow = next
+    
+  # Now we know that prev is at right end. And where's the left end? The head
+  left, right = head, prev
+  
+  while right:
+    if left.val != right.val:
+      return False
+    else:
+      left = left.next; right = right.next
+      
+  return True
+
+    
 # 4. Merge Intervals
 # The Merge Intervals pattern is an efficient technique to deal with overlapping intervals. In a lot of problems involving intervals,
 # you either need to find overlapping intervals or merge intervals if they overlap.
