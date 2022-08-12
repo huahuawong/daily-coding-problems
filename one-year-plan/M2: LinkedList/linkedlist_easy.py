@@ -11,6 +11,7 @@ def reverseList(self, head: ListNode):
     head = prev
     return head
 
+# Alternative way of reversing linked list
 def reverseList(head, prev=None):
     if not head:
         return prev
@@ -24,6 +25,7 @@ def reverseList(head, prev=None):
 # of the first two lists.
 def mergeTwoLists(self, l1: ListNode, l2: ListNode) -> ListNode:
     dummy = curr = ListNode(0)
+    
     while l1 and l2:
         if l1.val > l2.val:
             curr.next = l2
@@ -32,7 +34,16 @@ def mergeTwoLists(self, l1: ListNode, l2: ListNode) -> ListNode:
             curr.next = l1
             l1 = l1.next
         curr = curr.next
+        
+    # This is when one linkedlist gets completely empty, and so we join the other non-empty list
     curr.next = l1 or l2
+    
+    # Alternatively, replace that with
+    if l1 is None:
+        curr.next = l2
+    elif l2 is None:
+        curr.next = l1
+        
     return dummy.next
 
 
