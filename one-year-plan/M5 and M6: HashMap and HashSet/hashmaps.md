@@ -9,3 +9,7 @@ delete_val(key): Removes the mapping for the specific key if the hash map contai
 ```
 
 ## HashSet
+
+
+
+Hackerrank practice [[link]](https://www.hackerrank.com/interview/interview-preparation-kit/dictionaries-hashmaps/challenges)
