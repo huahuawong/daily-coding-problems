@@ -32,6 +32,7 @@ class Solution:
         ptr1 = nums[0]
         ptr2 = tortoise
         while ptr1 != ptr2:
+              
             ptr1 = nums[ptr1]
             ptr2 = nums[ptr2]
         
@@ -358,4 +359,28 @@ LL2.insert(10)
 
 intersection = find_intersect_point(LL1, LL2)
 print(f'The intersection is at node {intersection.data}')
+
+
+# 12. 
+# The power set of a set is the set of all its subsets. Write a function that, given a set, generates its power set.
+# For example, given the set {1, 2, 3}, it should return {{}, {1}, {2}, {3}, {1, 2}, {1, 3}, {2, 3}, {1, 2, 3}}.
+
+# You may also use a list or array to represent a set.
+
+# There are multiple approaches to this problem, but the most fun one would be using "bottom-up" approach with recursion
+def generatePowerSet(arr):
+    # This condition is met when we have the last value to be printed
+    if len(arr) <= 1:
+        yield arr
+        yield []
+    else:
+        for item in generatePowerSet(arr[1:]):
+            yield [arr[0]] + item   # concatenate the two lists together here
+            yield item
+    
+            
+set_list = ['1', '2', '3']
+
+for x in generatePowerSet(set_list):
+    print(x)
 
