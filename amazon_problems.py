@@ -513,15 +513,16 @@ arr.index(num)
 # 	b. If not, repeat for arr[mid + 1 to end of array]
 # 3. Repeat this for when the second part of the array is sorted
 
-
 def search(arr, low, high, num):
+    if low > high:
+        return -1
     mid = (low + high) // 2
     
     if arr[mid] == num:
         return mid
     
     # How to check if arr[0], .... arr[mid] is sorted? check if first element is less than the mid element
-    if arr[low] < arr[mid]:
+    if arr[low] <= arr[mid]:
         # If so, we can search within this range of elements recursively
         if num >= arr[low] and num <= arr[mid]:
             return search(arr, low, mid-1, num)
@@ -532,4 +533,11 @@ def search(arr, low, high, num):
         return search(arr, mid + 1, high,  num)
     return search(arr, low, mid-1, num)
 
-search(arr, 0, len(arr), 18)
+
+arr = [4, 5, 6, 7, 8, 9, 18, 1, 2, 3]
+index = search(arr, 0, len(arr)-1, 20)
+
+if index != -1:
+    print(f'Index is at {index}')
+else:
+    print("No such key is present")
