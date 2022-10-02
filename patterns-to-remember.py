@@ -8,7 +8,6 @@
 # Longest substring with ‘K’ distinct characters (medium)
 # String anagrams (hard)
 
-
 # So, let's say for instance, Given an array of integers of size ‘n’, we want to calculate the maximum sum of 
 # ‘k’ consecutive elements in the array.
 
