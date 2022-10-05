@@ -46,3 +46,33 @@ def longestPalindrome(self, s):
                 continue
         k -= 1
         n -= 1
+
+        
+# Second approach, using dynamic programming
+# 1. Create a DP table with size of n x n, with n = length of the string
+# 2. Fill the diagonal with True
+# 3. Starting from the backward, iterate the outer loop backwards and iterate the inner loop forward
+# 4. Check characters at i and j position, if the 2 characters matches, 2 conditions need to be checked:
+#    a. First, to see if j - i == 1
+#    b. See if dp[i+1][j-1] == True
+
+def longestPalindrome(s):
+    longest_palin = ''
+    # initialize matrix
+    dp = [[0] * len(s) for _ in range(len(s))]
+    for i in range(len(s)):
+        dp[i][i] = True
+        longest_palin = s[i]
+
+    for i in range(len(s) - 1, -1, -1):
+        for j in range(i + 1, len(s)):
+            if s[i] == s[j]:
+                if j - i == 1 or dp[i+1][j-1] == True:
+                    dp[i][j] = True
+                    if len(longest_palin) < len(s[i:j+1]):
+                        longest_palin = s[i:j+1]
+    return longest_palin
+
+
+s = 'eabcb'
+print(longestPalindrome(s))
