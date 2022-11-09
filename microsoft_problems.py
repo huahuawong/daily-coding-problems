@@ -94,6 +94,8 @@ print(solve(n))
 # Q2 Given an array of numbers and a number k, determine if there are three entries in the array which add up to the specified
 # number k. For example, given [20, 303, 3, 4, 25] and k = 49, return true as 20 + 4 + 25 = 49
 
+# This approach is similar to 2sums approach, basically we have to break it down to 3 pointers, left, mid and right, after we sort the given array
+
 def get_two_sum(num, arr):
     i, k = 0, len(arr) - 1
     while i < k:
