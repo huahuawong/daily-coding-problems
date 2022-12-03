@@ -1,0 +1,1 @@
+Based on one-year-plan to crack the SWE assessments introduced by Anjali Virgama, the link to the article can be accessed here: [link](https://towardsdatascience.com/the-one-year-plan-for-competitive-coding-6af53f2f719c)
